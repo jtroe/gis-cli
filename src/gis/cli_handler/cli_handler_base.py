@@ -4,4 +4,4 @@ class CliHandlerBase:
         pass
     
     def execute(self, args):
-        pass
+        print(self)

@@ -1,19 +1,13 @@
-from cli_handler.admin import AdminHandler
-from cli_handler.group import GroupHandler
-from cli_handler.profile import ProfileHandler
-from cli_handler.role import RoleHandler
-from cli_handler.user import UserHandler
-from cli_handler.ux import UxHandler
-from cli_handler.webhook import WebhookHandler
+import cli_handler
 
 handler_types_by_name = {
-    'admin': AdminHandler,
-    'group': GroupHandler,
-    'profile': ProfileHandler,
-    'role': RoleHandler,
-    'user': UserHandler,
-    'ux': UxHandler,
-    'webhook': WebhookHandler,
+    'admin': cli_handler.AdminHandler,
+    'group': cli_handler.GroupHandler,
+    'profile': cli_handler.ProfileHandler,
+    'role': cli_handler.RoleHandler,
+    'user': cli_handler.UserHandler,
+    'ux': cli_handler.UxHandler,
+    'webhook': cli_handler.WebhookHandler,
 }
 
 def get_handler_by_command(command_name):
