@@ -7,3 +7,11 @@ args = parser.parse_args()
 if not args.command:
     parser.print_help()
     sys.exit(2)
+
+from command_handler import get_handler_by_command
+handler = get_handler_by_command(args.command)
+if not handler:
+    print(f"Sorry, not implemented for `gis {args.command}`")
+    sys.exit(2)
+
+handler.execute(args)
