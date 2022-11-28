@@ -5,3 +5,5 @@ from .role import RoleHandler
 from .user import UserHandler
 from .ux import UxHandler
 from .webhook import WebhookHandler
+
+from .cli_handler_base import CliHandlerBase as _CliHandlerBase

@@ -1,4 +1,4 @@
-import cli_handler
+from . import cli_handler
 
 handler_types_by_name = {
     'admin': cli_handler.AdminHandler,
@@ -12,6 +12,6 @@ handler_types_by_name = {
 
 def get_handler_by_command(command_name):
     HandlerClass = handler_types_by_name.get(command_name)
-    if not HandlerClass:
+    if not HandlerClass or not issubclass(HandlerClass, cli_handler._CliHandlerBase):
         return None
     return HandlerClass()
