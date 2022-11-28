@@ -1,7 +1,7 @@
 def get_giscli_argument_parser():
     import argparse
     parser = argparse.ArgumentParser(
-        prog='python -m gis',
+        prog='gis',
         description="a cli tool to manage your online gis, powered by ArcGIS API for Python")
     subparsers = parser.add_subparsers(dest='command')
 

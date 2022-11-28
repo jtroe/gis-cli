@@ -15,7 +15,7 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        "Development Status :: 4",
+        "Development Status :: 3",
         "Intended Audience :: System Administrators, Developers, ArcGIS API for Python",
         "License :: MIT",
         "Programming Language :: Python :: 3.7",
@@ -28,4 +28,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     install_requires=["arcgis>=2.0.1"],
+    entry_points={
+        'console_scripts': ['gis = gis:main']
+    }
 )
