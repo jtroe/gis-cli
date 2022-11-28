@@ -1,5 +1,5 @@
 import sys
-from _argument_parser import get_giscli_argument_parser
+from ._argument_parser import get_giscli_argument_parser
 
 parser = get_giscli_argument_parser()
 args = parser.parse_args()
