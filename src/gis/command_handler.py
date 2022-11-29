@@ -18,5 +18,13 @@ handler_types_by_name = {
 def get_handler(name):
     HandlerClass = handler_types_by_name.get(name)
     if not HandlerClass or not issubclass(HandlerClass, handlers._CliHandlerBase):
-        return None
-    return HandlerClass()
+        raise NotImplementedError()
+    try:
+        import arcgis
+    except ImportError as ex:
+        print('Failed to import `arcgis`, a required dependency')
+        raise ex
+    try:
+        return HandlerClass(arcgis)
+    except TypeError as ex:
+        raise NotImplementedError()
