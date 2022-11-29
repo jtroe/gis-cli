@@ -1,17 +1,22 @@
-from . import cli_handler
+from . import cli_handler as handlers
 
 handler_types_by_name = {
-    'admin': cli_handler.AdminHandler,
-    'group': cli_handler.GroupHandler,
-    'profile': cli_handler.ProfileHandler,
-    'role': cli_handler.RoleHandler,
-    'user': cli_handler.UserHandler,
-    'ux': cli_handler.UxHandler,
-    'webhook': cli_handler.WebhookHandler,
+    'admin.credit': handlers.AdminCreditHandler,
+    'admin.idp': handlers.AdminIdpHandler,
+    'admin.license': handlers.AdminLicenseHandler,
+    'admin.password-policy': handlers.AdminPasswordPolicyHandler,
+    'admin.reindex': handlers.AdminReindexHandler,
+    'admin.ssl': handlers.AdminSslHandler,
+    'group': handlers.GroupHandler,
+    'profile': handlers.ProfileHandler,
+    'role': handlers.RoleHandler,
+    'user': handlers.UserHandler,
+    'ux': handlers.UxHandler,
+    'webhook': handlers.WebhookHandler,
 }
 
-def get_handler_by_command(command_name):
-    HandlerClass = handler_types_by_name.get(command_name)
-    if not HandlerClass or not issubclass(HandlerClass, cli_handler._CliHandlerBase):
+def get_handler(name):
+    HandlerClass = handler_types_by_name.get(name)
+    if not HandlerClass or not issubclass(HandlerClass, handlers._CliHandlerBase):
         return None
     return HandlerClass()
