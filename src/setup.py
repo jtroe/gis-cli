@@ -28,7 +28,5 @@ setup(
     zip_safe=False,
     include_package_data=True,
     install_requires=["arcgis>=2.0.1"],
-    entry_points={
-        'console_scripts': ['gis = gis:main']
-    }
+    entry_points={"console_scripts": ["gis = gis:main"]},
 )
