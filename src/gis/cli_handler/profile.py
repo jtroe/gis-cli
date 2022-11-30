@@ -15,13 +15,14 @@ class ProfileHandler(CliHandlerBase):
             print("No profiles found")
         else:
             print("Profiles:")
-        for profile in profiles_list:
-            print(profile)
+        for profile_name in profiles_list:
+            profile = profiles_list[profile_name]
+            print(f"{profile_name} ({profile.get('url', 'Default')})")
     
     def _get_profiles(self):
         pm = self.arcgis.gis.ProfileManager()
-        profiles_list = pm.list()
-        return profiles_list
+        profile_names = pm.list()
+        return {profile: pm.get(profile) for profile in profile_names}
 
     def test(self, args):
         print(f"Testing profile {args.profile}...")
