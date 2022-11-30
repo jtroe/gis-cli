@@ -11,6 +11,12 @@ class GisCliArgumentParser(ArgumentParser):
 
 
 def get_giscli_argument_parser():
+    profile_parent_parser = ArgumentParser(add_help=False)
+    profile_parent_parser.add_argument(
+        "--profile",
+        action="store",
+        help="The connection profile to use for this action",
+    )
 
     parser = GisCliArgumentParser(
         prog="gis",
@@ -82,7 +88,7 @@ def get_giscli_argument_parser():
         "list", help="List connection profile names"
     )
     profile_test_parser = profile_subparsers.add_parser(
-        "test", help="Test connection to profile"
+        "test", help="Test connection to profile", parents=[profile_parent_parser]
     )
     profile_update_parser = profile_subparsers.add_parser(
         "update", help="Update connection profile properties"
