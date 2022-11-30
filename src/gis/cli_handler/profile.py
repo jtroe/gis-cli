@@ -18,7 +18,7 @@ class ProfileHandler(CliHandlerBase):
         for profile_name in profiles_list:
             profile = profiles_list[profile_name]
             print(f"{profile_name} ({profile.get('url', 'Default')})")
-    
+
     def _get_profiles(self):
         pm = self.arcgis.gis.ProfileManager()
         profile_names = pm.list()
